@@ -18,6 +18,42 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+// Função de Login
+function login() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  auth.signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      alert("Bem-vindo, " + user.email);
+      // Redireciona ou exibe conteúdo
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert("Erro: " + errorMessage);
+    });
+}
+
+// Função de Cadastro
+function signUp() {
+  const email = document.getElementById("signup-email").value;
+  const password = document.getElementById("signup-password").value;
+
+  auth.createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      alert("Cadastro bem-sucedido, bem-vindo " + user.email);
+      // Redireciona ou exibe conteúdo
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert("Erro: " + errorMessage);
+    });
+}
+
 // Configurações do FirebaseUI
 const uiConfig = {
   callbacks: {
@@ -31,7 +67,7 @@ const uiConfig = {
     }
   },
   signInFlow: 'popup',
-  signInSuccessUrl: '/', // Coloque o URL para onde o usuário será redirecionado após o login
+  signInSuccessUrl: '/', // URL para onde o usuário será redirecionado após o login
   signInOptions: [
     GoogleAuthProvider.PROVIDER_ID,
     FacebookAuthProvider.PROVIDER_ID,
@@ -39,8 +75,8 @@ const uiConfig = {
     GithubAuthProvider.PROVIDER_ID,
     EmailAuthProvider.PROVIDER_ID
   ],
-  tosUrl: '/terms-of-service',  // Defina a URL para os Termos de Serviço
-  privacyPolicyUrl: '/privacy-policy'  // Defina a URL para a Política de Privacidade
+  tosUrl: '/terms-of-service',  // URL para os Termos de Serviço
+  privacyPolicyUrl: '/privacy-policy'  // URL para a Política de Privacidade
 };
 
 // Inicializa FirebaseUI com o Firebase Auth
