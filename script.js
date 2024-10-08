@@ -23,3 +23,10 @@ const analytics = getAnalytics(app);
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
   
+
+  //var para requerimento de login de usuario farebaseIU
+  var firebase = require('firebase');
+  var firebaseui = require('firebaseui');
+
+  // Initialize the FirebaseUI Widget using Firebase.
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
