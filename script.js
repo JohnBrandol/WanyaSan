@@ -1,7 +1,7 @@
-
-// Importar funções necessárias do Firebase SDK
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// Importa as funções necessárias do Firebase SDK
+import { initializeApp } from 'firebase/app';
+import { getAuth, GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider, GithubAuthProvider, EmailAuthProvider } from 'firebase/auth';
+import firebaseui from 'firebaseui';
 
 // Configuração do Firebase
 const firebaseConfig = {
@@ -14,113 +14,37 @@ const firebaseConfig = {
   measurementId: "G-BK941ZZQS9"
 };
 
-// Inicializar Firebase
+// Inicializa o Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const auth = getAuth(app);
 
-  
-  // Inicializar Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-  
-
-  //var para requerimento de login de usuario farebaseIU
-  var firebase = require('firebase');
-  var firebaseui = require('firebaseui');
-
-  // Initialize the FirebaseUI Widget using Firebase.
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-ui.start('#firebaseui-auth-container', {
-  signInOptions: [
-    firebase.auth.EmailAuthProvider.PROVIDER_ID
-  ],
-  // Other config options...
-});
-ui.start('#firebaseui-auth-container', {
-  signInOptions: [
-    {
-      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      requireDisplayName: false
-    }
-  ]
-});
-ui.start('#firebaseui-auth-container', {
-  signInOptions: [
-    // List of OAuth providers supported.
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-    firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-    firebase.auth.GithubAuthProvider.PROVIDER_ID
-  ],
-  // Other config options...
-});
-
-ui.start('#firebaseui-auth-container', {
-  signInOptions: [
-    {
-      provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      scopes: [
-        'https://www.googleapis.com/auth/contacts.readonly'
-      ],
-      customParameters: {
-        // Forces account selection even when one account
-        // is available.
-        prompt: 'select_account'
-      }
-    },
-    {
-      provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      scopes: [
-        'public_profile',
-        'email',
-        'user_likes',
-        'user_friends'
-      ],
-      customParameters: {
-        // Forces password re-entry.
-        auth_type: 'reauthenticate'
-      }
-    },
-    firebase.auth.TwitterAuthProvider.PROVIDER_ID, // Twitter does not support scopes.
-    firebase.auth.EmailAuthProvider.PROVIDER_ID // Other providers don't need to be given as object.
-  ]
-});
-
-// Initialize the FirebaseUI Widget using Firebase.
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-var uiConfig = {
+// Configurações do FirebaseUI
+const uiConfig = {
   callbacks: {
     signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-      // User successfully signed in.
-      // Return type determines whether we continue the redirect automatically
-      // or whether we leave that to developer to handle.
+      // Redireciona o usuário ou retorna `true` para redirecionamento automático
       return true;
     },
     uiShown: function() {
-      // The widget is rendered.
-      // Hide the loader.
+      // A UI foi renderizada, oculta o loader
       document.getElementById('loader').style.display = 'none';
     }
   },
-  // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
   signInFlow: 'popup',
-  signInSuccessUrl: '<url-to-redirect-to-on-success>',
+  signInSuccessUrl: '/', // Coloque o URL para onde o usuário será redirecionado após o login
   signInOptions: [
-    // Leave the lines as is for the providers you want to offer your users.
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-    firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-    firebase.auth.GithubAuthProvider.PROVIDER_ID,
-    firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    firebase.auth.PhoneAuthProvider.PROVIDER_ID
+    GoogleAuthProvider.PROVIDER_ID,
+    FacebookAuthProvider.PROVIDER_ID,
+    TwitterAuthProvider.PROVIDER_ID,
+    GithubAuthProvider.PROVIDER_ID,
+    EmailAuthProvider.PROVIDER_ID
   ],
-  // Terms of service url.
-  tosUrl: '<your-tos-url>',
-  // Privacy policy url.
-  privacyPolicyUrl: '<your-privacy-policy-url>'
+  tosUrl: '/terms-of-service',  // Defina a URL para os Termos de Serviço
+  privacyPolicyUrl: '/privacy-policy'  // Defina a URL para a Política de Privacidade
 };
 
-// The start method will wait until the DOM is loaded.
+// Inicializa FirebaseUI com o Firebase Auth
+const ui = new firebaseui.auth.AuthUI(auth);
+
+// A UI espera o DOM carregar
 ui.start('#firebaseui-auth-container', uiConfig);

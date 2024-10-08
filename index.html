@@ -1,75 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WanySan</title>
+    <title>WanySan - Login e Cadastro</title>
 
-    <!-- FirebaseUI -->
+    <!-- Estilos -->
+    <link type="text/css" rel="stylesheet" href="login.css" />
+
+    <!-- Firebase Authentication e FirebaseUI -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
 
-    <!-- Firebase SDK -->
-    <script defer src="/__/firebase/10.14.0/firebase-app-compat.js"></script>
-    <script defer src="/__/firebase/10.14.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/10.14.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="login.css">
   </head>
   <body>
-
     <div id="firebaseui-auth-container"></div>
-    <div id="loader">Carregando...</div>
+    <p id="loader">Carregando...</p>
 
-    <script>
-      // Configuração do Firebase
-      const firebaseConfig = {
-        apiKey: "AIzaSyAeKROa0FkYL03R1-vGt34l5t8Cxn6f7MI",
-        authDomain: "mamae-e5e58.firebaseapp.com",
-        projectId: "mamae-e5e58",
-        storageBucket: "mamae-e5e58.appspot.com",
-        messagingSenderId: "102550491819",
-        appId: "1:102550491819:web:0c4d848ff498d23f219dee",
-        measurementId: "G-BK941ZZQS9"
-      };
-
-      // Inicializa o Firebase
-      const app = firebase.initializeApp(firebaseConfig);
-      const auth = firebase.auth();
-      const analytics = firebase.analytics();
-
-      // Configuração do FirebaseUI
-      const uiConfig = {
-        callbacks: {
-          signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-            // O login foi bem-sucedido, podemos redirecionar ou exibir uma mensagem
-            console.log("Usuário logado com sucesso!");
-            return true; // Redireciona automaticamente
-          },
-          uiShown: function() {
-            // O widget foi carregado, podemos esconder o loader
-            document.getElementById('loader').style.display = 'none';
-          }
-        },
-        signInFlow: 'popup',  // Usar popup para o login
-        signInSuccessUrl: '<url-to-redirect-on-success>',  // URL para redirecionar após o login
-        signInOptions: [
-          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-          firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-          firebase.auth.GithubAuthProvider.PROVIDER_ID,
-          firebase.auth.EmailAuthProvider.PROVIDER_ID
-        ],
-        tosUrl: '<your-tos-url>',  // URL para termos de serviço
-        privacyPolicyUrl: '<your-privacy-policy-url>'  // URL para a política de privacidade
-      };
-
-      // Inicializando o FirebaseUI
-      const ui = new firebaseui.auth.AuthUI(auth);
-      ui.start('#firebaseui-auth-container', uiConfig);
-    </script>
-    
+    <!-- Script externo que inicializa o Firebase -->
+    <script src="script.js" defer></script>
   </body>
 </html>
