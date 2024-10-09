@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
@@ -20,11 +20,11 @@
       <label for="email">Email:</label>
       <input type="email" id="email" placeholder="Digite seu email" required />
       <br>
-      <label for="password">Senha:</label>
+      <label for="password" class="senha">Senha:</label>
       <input type="password" id="password" placeholder="Digite sua senha" required />
       <br>
       <button onclick="login()">Entrar</button>
-    </div>
+    </div><br>
 
     <h2>Cadastro</h2>
     <div id="signup-section">
@@ -37,8 +37,6 @@
       <button onclick="signUp()">Cadastrar</button>
     </div>
 
-    <div id="firebaseui-auth-container"></div>
-    <p id="loader">Carregando...</p>
 
     <!-- Script externo que inicializa o Firebase -->
     <script src="script.js" defer></script>

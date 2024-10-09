@@ -1,70 +1,23 @@
-/* Estilos gerais do corpo */
-body {
-    background: #ECEFF1;
-    color: rgba(0, 0, 0, 0.87);
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+  #firebaseui-auth-container,#firebaseui-auth-container a{
+    box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24)}
+  body{
+    background:#b1daf5;color:rgba(0,0,0,.87);font-family:Roboto,Helvetica,Arial,sans-serif;margin:0;padding:20px; text-align: center;}
+  #firebaseui-auth-container{
+    background:#e0fca0;max-width:360px;margin:100px auto;padding:32px 24px;border-radius:3px}
+  #firebaseui-auth-container h1{
+    font-size:22px;font-weight:300;color:rgba(0,0,0,.6);margin:0 0 16px}
+  #firebaseui-auth-container p{
+    line-height:140%;margin:16px 0 24px;font-size:14px}
+  #firebaseui-auth-container a{
+    display:block;text-align:center;background:#039be5;text-transform:uppercase;text-decoration:none;color:#fff;padding:16px;border-radius:4px}
+  #firebaseui-auth-container a:hover{
+    background:#0288d1}
+  #loader{
+    color:rgba(0,0,0,.4);text-align:center;font-size:13px}
+  @media (max-width:600px){
+    #firebaseui-auth-container,body{margin-top:0;background:#fff;box-shadow:none}body{border-top:16px solid #050401}}
   
-  /* Container da mensagem de login */
-  #firebaseui-auth-container {
-    background: white;
-    max-width: 360px;
-    margin: 100px auto;
-    padding: 32px 24px;
-    border-radius: 3px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  }
-  
-  /* Título */
-  #firebaseui-auth-container h1 {
-    font-size: 22px;
-    font-weight: 300;
-    color: rgba(0, 0, 0, 0.6);
-    margin: 0 0 16px;
-  }
-  
-  /* Texto e informações adicionais */
-  #firebaseui-auth-container p {
-    line-height: 140%;
-    margin: 16px 0 24px;
-    font-size: 14px;
-  }
-  
-  /* Links e botões */
-  #firebaseui-auth-container a {
-    display: block;
-    text-align: center;
-    background: #039be5;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: white;
-    padding: 16px;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  }
-  
-  #firebaseui-auth-container a:hover {
-    background: #0288d1;
-  }
-  
-  /* Loader */
-  #loader {
-    color: rgba(0, 0, 0, 0.4);
-    text-align: center;
-    font-size: 13px;
-  }
-  
-  /* Responsividade para telas menores */
-  @media (max-width: 600px) {
-    body, #firebaseui-auth-container {
-      margin-top: 0;
-      background: white;
-      box-shadow: none;
-    }
-    body {
-      border-top: 16px solid #050401;
-    }
-  }
-  
+label.senha{
+    padding-bottom: 20px;
+    
+ }
